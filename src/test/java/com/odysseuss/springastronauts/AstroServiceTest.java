@@ -14,8 +14,6 @@ public class AstroServiceTest {
     @Test
     void getAstronauts(@Autowired AstroService service) {
         assertNotNull(service);
-
-        
     }
     
 }
