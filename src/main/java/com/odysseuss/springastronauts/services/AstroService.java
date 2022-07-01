@@ -1,5 +1,8 @@
 package com.odysseuss.springastronauts.services;
 
+import java.util.Collections;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
@@ -19,7 +22,9 @@ public class AstroService {
     public AstroResult getAstronauts() {
         
         String url = "http://api.open-notify.org/astros.json";
-        return restTemplate.getForObject(url, AstroResult.class);
+
+        return Optional.ofNullable(restTemplate.getForObject(url, AstroResult.class))
+                .orElse(new AstroResult("fail", 0, Collections.emptyList()));
     }
 
 
